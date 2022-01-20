@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Assignment 1">
+        <title>Lindsey Martin Week 1</title>
+    </head>
+    <!--
+        Instructions:
+        Using the window object, ask the user to enter a number. 
+        Then ask the user to enter a second number. 
+        Then add the numbers and put the result on the webpage. 
+        I should see something like:
+        "You entered 5 + 12 which equals 17"-->
+    <body>
+        <script language = "JavaScript">
+                // enter number 1
+                var requestMsg = "Enter a Number: ";
+                userInput1 = prompt(requestMsg);
+                userInput1 = parseFloat(userInput1);
+
+                // enter number 2
+                var requestMsg2 = "Enter a second Number: ";
+                userInput2 = prompt(requestMsg2);
+                userInput2 = parseFloat(userInput2);
+                
+                // result
+                var result;
+                result = userInput1 + userInput2;
+                console.log(TypeError);
+                document.write("You entered " + userInput1 + " + " + userInput2 + " which equals to " + result + "!");
+    
+            </script>
+    </body>
+</html>
