@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lindsey Martin Week 2</title>
+</head>
+<!--If I were to give you a penny today and double your money every day for a year, how much money would you have? Please show the code.
+
+Hint: use a for loop that has the following structure, but change the values:
+
+//this will loop 31 times:
+
+for (var i = 1;i < 31; i++){
+
+    }
+-->
+
+<body>
+    <script>
+        // define the penny total 
+        var penny = 0.01;
+
+        for (var i = 1; i < 365; i++){ // the user can use i = 0; i < 364; and the total would be  $3.757668132438133e+107
+            penny = penny*2;
+            console.log('$' + penny  + '');
+           
+
+}
+    // log the total 
+    document.write('If you doubled a Penny everyday for 365 days, you would have $' + penny + ' saved!');
+
+    </script>
+
+
+</body>
+</html>
