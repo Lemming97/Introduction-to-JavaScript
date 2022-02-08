@@ -31,30 +31,30 @@
                     for (var cols = 0; cols <= 10; cols++) { // cols = b 
                         if (rows == 0 && cols == 0) {
                             document.write("<td style='width:40px; color: #E489CE;" +
-                                "''><center><font size='4'>" + "x" +
+                                "'><center><font size='4'>" + "x" +
                                 "</center></font></td>")
 
                         } else if (rows == 0) {
 
                             document.write("<td style='width:40px; color: #1A14FF;" +
-                                "''><center><font size='4'>" + cols +
+                                "'><center><font size='4'>" + cols +
                                 "</center></font></td>")
 
 
                         } else if (cols == 0) {
                             document.write("<td style='width:40px; color: #FF341F" +
-                                "''><center><font size='4'>" + rows +
+                                "'><center><font size='4'>" + rows +
                                 "</center></font></td>")
 
                         } else if (rows ==
                             cols
                             ) { // The pattern is that the row is the same as the column, so row 2 = col2, row 3 = col 3, etc etc                           
                             document.write("<td style='width:40px; color: #127A0B" +
-                                "''><center><font size='4'>" + rows * cols +
+                                "'><center><font size='4'>" + rows * cols +
                                 "</center></font></td>")
                         } else {
                             document.write("<td style='width:40px;" +
-                                "''><center><font size='4'>" + rows * cols +
+                                "'><center><font size='4'>" + rows * cols +
                                 "</center></font></td>")
 
                         }
