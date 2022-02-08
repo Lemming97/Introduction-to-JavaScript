@@ -1,0 +1,89 @@
+<html>
+<title>Lindsey Martin Lesson 3</title>
+
+<head>
+	<!--1. Lift tickets at my ski resort are $20 before noon
+		2. & $25 from noon to 6pm and 
+		3. $15 dollars for night skiing. 6:01pm - after 
+		4. Create a form that allows the user to choose their lift ticket. 
+		5. Upon selection, output the cost of the ticket. 
+		6. The taxes are 6% for Californians and 8% if the user is from out of state.-->
+	<script>
+		//declare variable 
+		var cost;
+
+		function ReserveTickets () {
+		var times = document.getElementById('time'),
+			time, i;
+
+		//loop for time selected and cost for time 
+		for (i = 0; i < times.length; i++) {
+			time = times[i];
+			if (time.selected) {
+				if (i === 0) {
+                    cost = 20.00;
+
+					//document.getElementById('cost').innerHTML = 20.00
+				} else if (i === 1) {
+                     cost = 25.00;
+					//document.getElementById('cost').innerHTML = 25.00
+				} else {
+                     cost = 15.00;
+					//document.getElementById('cost').innerHTML = 15.00
+				}
+			}
+			
+		} 
+            // loop for the state selection 
+            var states = document.getElementById('instate'), instate, i;
+            for (i = 0; i < states.length; i++){
+                instate = states[i];
+                if (instate.selected) {
+                    if (i === 0 ) {
+                        cost *= 1.06
+                    } else {
+                        cost *= 1.08
+                    }  
+                    
+                }
+                
+            }
+            
+            document.getElementById('cost').innerHTML = "Your total is $" +  cost.toFixed(2);
+            
+		
+	}
+        
+		
+	</script>
+</head>
+
+<body>
+	<h1>Homework Week 3</h1>
+<form>
+	<p><label>Book Your Ski Lift</label>
+		<select id="time"><!--these options are apart of the select ID , Time, meaning the array will cycle through the values of the selctor-->
+			<option>Choose Time Below</option>
+			<option value="morning">Before noon</option>
+			<option value="afternoon">Noon - 6pm</option>
+			<option value="night">After 6pm</option>
+		</select></p>
+    
+	   <p>California resident?
+		<select id="instate" name="instate">
+			<option value="yes">Yes</option>
+			<!--add tax on the check box of yes or no-->
+			<option value="no">No</option>
+		</select></p>
+	<input type="button" onClick="ReserveTickets()" value="Reserve Lift Tickets">
+    
+	</form>
+
+	<script>
+		console.log('ReserveTickets');
+	</script>
+
+<p id="cost"></p>
+</body>
+
+</html>
