@@ -6,5 +6,6 @@ Introduction to JavaScript for UCSD
 2. Week 2 - Variables and Operators
 3. Week 3 - Conditionals and Loops
 4. Week 4 - Multiplication Table
+5. Week 5 - Validate Forms
 
 Copyright© 2021 Lindsey Martin
