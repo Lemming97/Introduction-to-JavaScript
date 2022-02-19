@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lindsey Martin Lesson 7
+    </title>
+</head>
+
+<body>
+    <!--This week your job is to debug the following code and make it function. -->
+    <script>
+        function displayOddNumbers() {
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+            let evenNumbers = []; // [] is an emptyt array. There's nothing inside the array
+            let oddNumbers = [];
+
+            for (let i = 0; i < numbers.length - 1; i++) {
+
+                if (numbers[i] % 2 === 0) { // % is outputting the remainder of what's left like 13/5 (5*2)= 10, 5*3 = 15, 15 is more than 13 then you take 5*2 =10 then you would do 13-10 = 3. It is remainder left over when one operand is divided by a second operand. 
+
+                    evenNumbers.push(numbers[i]) // push modifies inthe array for evenNumbers, or puts more things into the array []
+                    //putting those numbers that woukld be true for into that array evenNumbers, so 2, 4, 6, 8 
+
+                } else {
+                    oddNumbers.push(numbers[i])
+
+                }
+
+            }
+            return oddNumbers;
+        }
+
+
+        console.log(displayOddNumbers()); // should return [1,3,5,7]
+        document.write(displayOddNumbers().join(', '));
+
+    </script>
+
+
+</body>
+
+</html>
