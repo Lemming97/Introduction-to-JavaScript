@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lindsey Martin Lesson 6 </title>
+</head>
+
+<body>
+    <!-- Go here: http://mm214.com/demo.php (Links to an external site.) 
+    (Links to an external site.)
+    Your job is to take that data and output the weather including the description and temperature on a web page.-->
+    <span id="output1"></span><br>
+    <span id="output4"></span><br>
+    <span id="output6"></span><br>
+    <span id="output2"></span><br>
+    <span id="output3"></span><br>
+    <span id="output5"></span><br>
+    
+    <script>
+        var getJSON = function(url, callback) {
+            var xhr = new XMLHttpRequest();
+            console.log(xhr);
+            xhr.open('get', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+                var status = xhr.status;
+                if (status == 200) {
+                    callback(null, xhr.response);
+                } else {
+                    callback(status);
+                }
+            };
+            xhr.send();
+        };
+
+        getJSON('https://mm214.com/demo.php', function(err, data) {
+            if (err != null) {
+                alert('Something went wrong: ' + err);
+            } else {
+                console.log(data);
+                document.getElementById('output1').innerHTML = data.base;
+                document.getElementById('output4').innerHTML = data.clouds.all;
+                document.getElementById('output6').innerHTML = data.main.humidity;
+                document.getElementById('output2').innerHTML = data.main.temp;
+                document.getElementById('output5').innerHTML = data.name;
+                document.getElementById('output3').innerHTML = data.weather[0].description;
+                //alert('Your Json result is:  ' + data.result);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
