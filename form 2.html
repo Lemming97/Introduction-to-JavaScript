@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lindsey Martin Lesson 5</title>
+    <!--1. Using nothing but the DOM, validate the attached html using nothing but javascript 
+    2. so that at all inputs have at least something entered, checked or selected.
+   3. Your user is using a browser that does not support html5's "required" attribute.
+
+-->
+
+    <script>
+        function validateMe() {
+            var buttons = document.getElementsByName('gender');
+            var checkbox = document.getElementsByName('hobbies');
+            var noneChosenGender = true;
+            var noneChosenHobbie = true;
+
+            for (var i = 0; i < document.forms[0].length; i++) { // document.forms is just looping through <form></form> in the body 
+
+                if (document.forms[0].elements[i].value == '') {
+                    alert('Please enter your ' + document.forms[0].elements[i].name);
+                    return false;
+                }
+
+            }
+            for (var i = 0; i < buttons.length; i++) { //button for loop for gender
+                if (buttons[i].checked) {
+                    noneChosenGender = false;
+                    strChoice = buttons[i].value;
+                }
+            }
+            if (noneChosenGender) {
+                alert('Please choose gender');
+                return false;
+            }
+
+            for (var i = 0; i < checkbox.length; i++) { //checkbox for loop hobby
+                console.log(checkbox);
+                if (checkbox[i].checked) {
+                    noneChosenHobbie = false;
+                    strChoice = checkbox[i].value;
+
+                }
+            }
+            if (noneChosenHobbie) {
+                alert('Please choose a Hobbie');
+                return false;
+            }
+
+            alert('Your answers were submitted!');
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <p><center><h2>Validate Me</h2></p>
+    At lease one piece of data has to come in from every input type.</center>
+
+    <form action="form.html" method="get"><br />
+        <p>
+            <b>Name:</b>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" /><br /></p>
+        <p>
+            <b>Gender:</b><br />
+            Male<input type="radio" name="gender" value="male" />Female<input type="radio" name="gender" value="female" /><br /></p>
+        <p>
+           <b>Hobbies</b><br />
+            Baseball <input type="checkbox" name="hobbies" value="baseball" />
+            Football <input type="checkbox" name="hobbies" value="football" />
+            Hockey <input type="checkbox" name="hobbies" value="hockey" /><br />
+        </p>
+        <p>
+            <b>Favorite Show</b> <select id="fullname" name="show">
+                <option value="">Choose Below</option>
+                <option value="ATHF">Aqua Teen Hunger Force</option>
+                <option value="Family Guy">Family Guy</option>
+                <option value="Simpsons">Simpsons</option>
+            </select><br /></p>
+        <p>
+            <b>Comments</b><br />
+            <textarea cols="50" rows="6" name="comments"></textarea><br />
+        <p>
+            <input type="submit" name="submit" value="Enter Me" onclick="return validateMe();" />
+    </form>
+
+    <script>
+        console.log(validateMe);
+
+    </script>
+
+</body>
+
+</html>
