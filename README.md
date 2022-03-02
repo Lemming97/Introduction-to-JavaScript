@@ -9,5 +9,6 @@ Introduction to JavaScript for UCSD
 5. Week 5 - Validate Forms
 6. Week 6 - JSON Output
 7. Week 7 - Debug JS
+8. Week 8 - Return Menu Items
 
 Copyright© 2021 Lindsey Martin
