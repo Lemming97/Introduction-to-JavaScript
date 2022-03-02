@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lindsey Martin&copy; Lesson 8</title>
+</head>
+<!--Question 1
+    I've got this groovy object of menu items.
+    Please output them in a discernable fashion so my customers can order
+    Style is your choice...you're the web guru
+    Question 2
+    Now that you've outputted the menu, let the user order and save their order as a JSON string in localStorage
+    Question 3
+    Add a button with the label "Your Order". Onclick, show the user what they have ordered
+    You can use this link if you want to use Ajax: https://mm214.com/menu.php-->
+<style>
+    h2 {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    /* Button stylings*/
+    .button {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        border: 2px solid #008CBA;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+
+    .button:hover {
+        background-color: white;
+        color: black;
+    }
+
+    /* Checkbox stylings*/
+
+    /* Hide the default checkbox */
+    label input {
+        display: none;
+
+    }
+
+    /* Style the custom checkbox */
+    label span {
+        height: 10px;
+        width: 10px;
+        border: 2px solid #008CBA;
+        display: inline-block;
+        position: relative;
+
+    }
+
+    label span:hover {
+        height: 10px;
+        width: 10px;
+        background-color: #008CBA;
+        border: 2px solid #008CBA;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    /* Style its checked state...with a ticked icon from https://unicode-table.com/ */
+    [type=checkbox]:checked+span:before {
+        content: '\2714';
+        position: absolute;
+        top: -5px;
+        left: 0;
+    }
+</style>
+
+<body>
+
+    <p id="menu">
+
+
+    </p>
+    <script>
+        var json = ` {
+            "menu": {
+                "Slice of Pizza": "2.00",
+                "Toppings": {
+                    "Pepperoni": "0.25",
+                    "Meatballs": "0.35",
+                    "Mushrooms": "0.40",
+                    "Olives": "0.20"
+                },
+                "Sides": {
+                    "Potato salad": "1.25",
+                    "Hummus": "2.50",
+                    "Caesar salad": "3.50",
+                    "Garden salad": "2.25"
+                },
+                "Drinks": {
+                    "Soda": {
+                        "Small": "1.95",
+                        "Medium": "2.20",
+                        "Large": "2.50"
+                    },
+                    "Juice": "2.00",
+                    "Water": "1.25"
+                }
+            }
+        }`;
+
+        // Convert JSON to HTML
+
+        var obj = JSON.parse(json);
+        var content = '';
+        var menu = obj.menu;
+        for (i in menu) {
+            //content += i + ': ' + menu[i] + '<br>';
+            // removing the [ object object from Toppings etc]
+            if (typeof menu[i] != 'object') {
+                content +=
+                    '<center><h2>Select Your Order</h2><b>Pizza</b><br><label><input type="checkbox" id="Pizza" name="order"> <span></span> ' +
+                    i +
+                    ': ' + menu[i] + '</input></label><br>';
+            } else if (typeof menu[i] != ' ') {
+                content += '<b>' + i + ':</b> ' + '<br>';
+            }
+
+
+            if (i == 'Toppings') {
+                for (item in menu[i]) {
+                    content += '<label><input type="checkbox" id="' + item + '" name="order"><span></span> ' + item +
+                        ' : ' + menu[i][item] +
+                        '</input></label><br>';
+                }
+            }
+            if (i == 'Sides') {
+                for (item in menu[i]) {
+                    content += '<label><input type="checkbox" id="' + item + '" name="order"> <span></span> ' + item +
+                        ' : ' + menu[i][item] +
+                        '</input></label><br>';
+                }
+            }
+            if (i == 'Drinks') {
+
+                for (item in menu[i]) {
+                    //content += item + ' : ' + menu[i][item] + '<br>';
+                    if (item == 'Soda') {
+                        content += '<b>' + item + ' :</b> ' + '<br>';
+                        for (Soda in menu[i][item]) {
+                            content += '<label><input type="checkbox" id="' + Soda + ' Soda' +
+                                '" name="order"> <span></span> ' + Soda +
+                                ' : ' + menu[i]
+                                [item][Soda] + '</input></label><br>';
+
+                        }
+
+                    } else if (item != 'Soda') {
+                        content += '<label><input type="checkbox" id="' + item + '"name="order"> <span></span> ' +
+                            item + ' : ' + menu[i][
+                                item
+                            ] + '</input></label><br>';
+                    }
+
+                }
+            }
+            // for (k in menu[i]){
+            //content += k + ': ' + menu[i][k] + '<br>';
+            //}
+        }
+        document.getElementById('menu').innerHTML = content;
+
+
+        function YourOrder() {
+            var menu = [];
+            var checkbox = document.getElementsByName('order');
+            for (var i = 0; i < checkbox.length; i++) {
+                console.log(checkbox);
+                if (checkbox[i].checked) {
+                    menu.push(checkbox[i].id)
+
+                }
+
+
+            }
+            console.log(menu);
+            localStorage.setItem("menu", JSON.stringify(menu));
+            //document.getElementById('ordered').innerHTML;
+
+            document.getElementById('ordered').innerHTML = "You ordered " + menu.join(', ');
+
+
+
+        }
+    </script>
+
+
+    <center> <button type="button" class="button" onclick="return YourOrder();">Process Your Order!</button><br>
+        <p id="ordered"></p>
+    </center>
+</body>
+
+</html>
